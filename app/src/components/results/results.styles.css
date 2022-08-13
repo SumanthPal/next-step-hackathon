@@ -1,0 +1,41 @@
+.home {
+  color: #d4af37;
+  text-align: center;
+}
+
+h1 {
+  font-size: 100px;
+  padding: 10%;
+}
+
+button {
+  background-color: #d4af37; /* Green */
+  border: 5px;
+  color: whitesmoke;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: wavy;
+  display: inline-block;
+  font-size: 25px;
+  border-radius: 30px;
+  width: 200px;
+  margin: 20px;
+  font-family: "Ovo", serif;
+  position: relative;
+}
+
+button:hover {
+  opacity: 0.5;
+}
+
+.input-stuff {
+}
+
+input {
+  font-size: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px white;
+  background-color: whitesmoke;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
