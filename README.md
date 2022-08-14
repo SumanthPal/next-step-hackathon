@@ -1,2 +1,2 @@
 # next-steps-hackathon
-jobful
+code for Med Oberserver as a part of the next step hackathon 2022
