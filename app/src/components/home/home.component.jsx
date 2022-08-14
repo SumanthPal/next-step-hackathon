@@ -41,7 +41,7 @@ const Home = () => {
   //filters hospital data
   
   const filteredData = data.filter(hospitales => {
-    if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state) && state != '') {
+    if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state) && (city != '' || state != '')) {
       return hospitales;
     }
   } 
