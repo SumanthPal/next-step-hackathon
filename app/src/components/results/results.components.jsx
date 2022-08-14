@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 const Page = () => {
   return (
     <div>
-      <h1>Display Results Here</h1>
+      <h1> Results Here</h1>
     </div>
   );
 };
