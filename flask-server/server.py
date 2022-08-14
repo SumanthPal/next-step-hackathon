@@ -20,6 +20,7 @@ def filter_results(city, state):
                 "State": hospital["properties"]['s'],
                 "Inpatient beds used": hospital["properties"]['bc'],
                 "ICU beds used": hospital["properties"]['ic'],
+                "Coordinates": hospital["geometry"]["coordinates"]
             })
 
     return results
@@ -28,10 +29,13 @@ def filter_results(city, state):
 @app.route("/results")
 def results():
 
-    city = request.args.get("city")
-    state = request.args.get("state")
+    if request.method == "POST":
 
-    return filter_results(city, state)
+        city = request.form.get("inputRef2")
+        state = request.form.get("inputRef")
+
+        return filter_results(city, state)
+    return None
 
 
 if __name__ == "__main__":
