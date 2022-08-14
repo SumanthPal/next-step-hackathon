@@ -33,9 +33,8 @@
    
  }
   
- .input-stuff {
-   
- }
+
+
   
  input {
     font-size:40px;
@@ -44,3 +43,31 @@
     background-color: whitesmoke;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
  } 
+ .container {
+   display: flexbox;
+   flex-direction: column;
+   background-color: turquoise;
+   border: 1px solid grey;
+   border-radius: 5px;
+   padding: 25px;
+   cursor: pointer;
+   -moz-osx-font-smoothing: grayscale;
+
+   backface-visibility: hidden;
+   transform: translateZ(0);
+   transition: transform 0.25s ease-out;
+   
+ }
+ .container:hover {
+   transform: scale(1.05);
+   background: rgb(7,160,160);
+   background: linear-gradient(90deg, rgba(7,160,160,1) 23%, rgba(255,243,0,1) 100%);
+ }
+
+ .list {
+   width: 85vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+ }

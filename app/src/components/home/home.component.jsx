@@ -2,6 +2,7 @@ import "./home.styles.css";
 import "animate.css";
 import React, { useState, useEffect, useRef } from "react";
 import Results from "../../Results";
+
 const Home = () => {
 
   const [data, setData] = useState([])
@@ -14,43 +15,47 @@ const Home = () => {
   const inputRef2 = useRef(null);
 
   const handleClick = () => {
-    setState(inputRef.current.value.toLocaleUpperCase());
-    setCity(inputRef2.current.value.toLocaleUpperCase());
+    setState(inputRef.current.value);
+    setCity(inputRef2.current.value);
+    addHospitals();
    // window.open("/results");
-    <div>
-      <Results />
-    </div>
+    
   };
 
   
 
-  useEffect(() => {
+  const filteredData = data.filter(hospitales => {
+    if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state)) {
+      return hospitales;
+    }
+  })
 
-    fetch("/data").then((response) =>
-        response.json().then((data) => {
-            setHospitals(data)
-        })
-      );
+  console.log(filteredData)
 
-
-  }, [])
-
-  console.log(hospital);
-  console.log(city);
-  console.log(state);
-  
-  
-  //method for displaying results
-  const hospitals = hospital.map((beds) => {
-    const {name, location, city, state, inpatient, icu, coordinates} = beds;
-
+  const addHospitals = filteredData.map(hospitales => {
     return (
-      <div>
-        <h1>{name}</h1>
-        
+      <div className = "container">
+        <h3>{hospitales.properties.n}</h3>
+        <li>Inpatient Beds in Use: {hospitales.properties.bc}</li>
+        <li>Hospital Address: {hospitales.properties.a}</li>
+        <li>Percentage of ICU Beds in Use: {hospitales.properties.ic}</li>
       </div>
     )
   })
+  
+
+  
+
+  useEffect(()=> {
+    fetch("bed_data.json").then((response) =>
+        response.json().then((data) => {
+            setData(data.features)
+        })
+      );
+  })
+
+
+  
 
   return (
     <div className="home">
@@ -59,12 +64,15 @@ const Home = () => {
         <input placeholder="enter state..." ref={inputRef} type="text" />
         <input type="text" placeholder="enter city..." ref={inputRef2} />
 
-        <button onClick={handleClick}>Enter</button>
+        <button onClick={handleClick} >Enter</button>
       </div>
       <footer>Created by High School Students</footer>
 
-      {hospitals}
-    </div>
+      <div className = "list">
+        {addHospitals}
+      </div>
+      
+      </div>
   );
 };
 
