@@ -46,9 +46,11 @@
  .container {
    display: flexbox;
    flex-direction: column;
-   background-color: turquoise;
+   background: rgb(101, 182, 239);
+
    border: 1px solid grey;
    border-radius: 5px;
+   top: 30%;
    padding: 25px;
    cursor: pointer;
    -moz-osx-font-smoothing: grayscale;
@@ -56,12 +58,12 @@
    backface-visibility: hidden;
    transform: translateZ(0);
    transition: transform 0.25s ease-out;
+   margin: 20px;
    
  }
  .container:hover {
    transform: scale(1.05);
-   background: rgb(7,160,160);
-   background: linear-gradient(90deg, rgba(7,160,160,1) 23%, rgba(255,243,0,1) 100%);
+   background: rgb(101, 182, 239);
  }
 
  .list {
@@ -72,4 +74,14 @@
     grid-gap: 20px;
  }
  
- 
+ li {
+   color:black;
+ }
+
+ h2 { 
+   color: black;
+ }
+
+.btn-cool {
+   font-size: 32px;
+}

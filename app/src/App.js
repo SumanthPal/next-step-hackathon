@@ -6,10 +6,7 @@ function App() {
   return (
     <body>
     <div className="App">
-      <Routes>
-        <Route path = '/results' element = { <Results />} />
-        <Route index element = {<Home />} />
-      </Routes>  
+        <Home />
     </div>
     </body>
   );
