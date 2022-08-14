@@ -37,4 +37,4 @@ We're proud of creating a functional, helpful application in a limited time peri
 
 
 
-#The app is also hosted on Heroku. Check this link to try it out! https://med-observer.herokuapp.com/
+# The app is also hosted on Heroku. Check this link to try it out! https://med-observer.herokuapp.com/
