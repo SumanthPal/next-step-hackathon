@@ -47,17 +47,3 @@ const Home = () => {
 };
 
 export default Home;
-
-[
-    {
-        name: hospital1
-        location: 123 somthing WAY
-        beds: 50%
-        jskadlfj
-    }
-    {
-        name: hospital2
-        sjdflajsdf
-    }
-
-]
