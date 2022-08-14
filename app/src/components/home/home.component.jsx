@@ -2,6 +2,8 @@ import "./home.styles.css";
 import "animate.css";
 import React, { useState, useEffect, useRef } from "react";
 import Results from "../../Results";
+import Map from 'react-map-gl'
+import Mapbox from "react-map-gl/dist/esm/mapbox/mapbox";
 const Home = () => {
 
   const [data, setData] = useState([])
@@ -15,20 +17,21 @@ const Home = () => {
 
   const handleClick = () => {
     setState(inputRef.current.value.toLocaleUpperCase());
-    setCity(inputRef2.current.value.toLocaleUpperCase());
+    setCity(inputRef2.current.value);
    // window.open("/results");
     <div>
       <Results />
     </div>
   };
 
-  
+
 
   useEffect(() => {
 
-    fetch("/data").then((response) =>
-        response.json().then((data) => {
-            setHospitals(data)
+    fetch("hello.json")
+    .then((response) => response.json()
+    .then((users) => {
+        setHospitals(users)
         })
       );
 
@@ -38,19 +41,20 @@ const Home = () => {
   console.log(hospital);
   console.log(city);
   console.log(state);
-  
-  
-  //method for displaying results
-  const hospitals = hospital.map((beds) => {
-    const {name, location, city, state, inpatient, icu, coordinates} = beds;
 
-    return (
-      <div>
-        <h1>{name}</h1>
-        
-      </div>
-    )
+  var Hospitales = []
+
+  var Hospitales = hospital.filter(hospitals => {
+    if( hospitals.city.includes(city) && hospitals.state.includes(state)) {
+      return hospitals
+    }
   })
+  console.log(Hospitales);
+
+
+  //method for displaying results
+
+
 
   return (
     <div className="home">
@@ -62,8 +66,6 @@ const Home = () => {
         <button onClick={handleClick}>Enter</button>
       </div>
       <footer>Created by High School Students</footer>
-
-      {hospitals}
     </div>
   );
 };
