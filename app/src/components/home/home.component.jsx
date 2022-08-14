@@ -11,8 +11,8 @@ const Home = () => {
   const inputRef2 = useRef(null);
 
   const handleClick = () => {
-    setState(inputRef.current.value.toLocaleUpperCase());
-    setCity(inputRef2.current.value.toLocaleUpperCase());
+    setState(inputRef.current.value);
+    setCity(inputRef2.current.value);
     window.open("/results");
     <div>
       <Results />
@@ -26,7 +26,7 @@ const Home = () => {
       .then((response) => response.json())
       .then((users) => setHospitals(users));
   }, []);
-  console.log(hospital);
+  console.log(state);
 
   return (
     <div className="home">
@@ -42,4 +42,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home
