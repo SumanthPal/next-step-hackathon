@@ -3,6 +3,9 @@ import "animate.css";
 import React, { useState, useEffect, useRef } from "react";
 import Results from "../../Results";
 const Home = () => {
+
+  const [data, setData] = useState([])
+
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [hospital, setHospitals] = useState([]);
@@ -22,11 +25,12 @@ const Home = () => {
   const filteredHospitals = () => {};
 
   useEffect(() => {
-    fetch("hello.json")
-      .then((response) => response.json())
-      .then((users) => setHospitals(users));
-  }, []);
-  console.log(hospital);
+    fetch("/").then((response) =>
+        response.json().then((data) => {
+            setData(data)
+        })
+      );
+  }, [])
 
   return (
     <div className="home">
@@ -43,3 +47,17 @@ const Home = () => {
 };
 
 export default Home;
+
+[
+    {
+        name: hospital1
+        location: 123 somthing WAY
+        beds: 50%
+        jskadlfj
+    }
+    {
+        name: hospital2
+        sjdflajsdf
+    }
+
+]
