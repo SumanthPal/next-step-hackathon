@@ -18,15 +18,15 @@ def filter_results(city, state):
                 "Location": hospital["properties"]['a'],
                 "City": hospital["properties"]['c'],
                 "State": hospital["properties"]['s'],
-                "Inpatient beds used": hospital["properties"]['bc'],
-                "ICU beds used": hospital["properties"]['ic'],
+                "inpatient": hospital["properties"]['bc'],
+                "icu": hospital["properties"]['ic'],
                 "Coordinates": hospital["geometry"]["coordinates"]
             })
 
-    return results
+    return results["HOSPITALS"]
 
 
-@app.route("/results", methods=["POST"])
+@app.route("/", methods=["POST"])
 def results():
 
     if request.method == "POST":

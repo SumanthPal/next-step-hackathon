@@ -3,6 +3,9 @@ import "animate.css";
 import React, { useState, useEffect, useRef } from "react";
 import Results from "../../Results";
 const Home = () => {
+
+  const [data, setData] = useState([])
+
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [hospital, setHospitals] = useState([]);
@@ -11,22 +14,43 @@ const Home = () => {
   const inputRef2 = useRef(null);
 
   const handleClick = () => {
-    setState(inputRef.current.value);
-    setCity(inputRef2.current.value);
-    window.open("/results");
+    setState(inputRef.current.value.toLocaleUpperCase());
+    setCity(inputRef2.current.value.toLocaleUpperCase());
+   // window.open("/results");
     <div>
       <Results />
     </div>
   };
 
-  const filteredHospitals = () => {};
+  
 
   useEffect(() => {
-    fetch("hello.json")
-      .then((response) => response.json())
-      .then((users) => setHospitals(users));
-  }, []);
+
+    fetch("/data").then((response) =>
+        response.json().then((data) => {
+            setHospitals(data)
+        })
+      );
+
+
+  }, [])
+
+  console.log(hospital);
+  console.log(city);
   console.log(state);
+  
+  
+  //method for displaying results
+  const hospitals = hospital.map((beds) => {
+    const {name, location, city, state, inpatient, icu, coordinates} = beds;
+
+    return (
+      <div>
+        <h1>{name}</h1>
+        
+      </div>
+    )
+  })
 
   return (
     <div className="home">
@@ -38,6 +62,8 @@ const Home = () => {
         <button onClick={handleClick}>Enter</button>
       </div>
       <footer>Created by High School Students</footer>
+
+      {hospitals}
     </div>
   );
 };
