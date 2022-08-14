@@ -26,7 +26,7 @@ def filter_results(city, state):
     return results
 
 
-@app.route("/results")
+@app.route("/results", methods=["POST"])
 def results():
 
     if request.method == "POST":
