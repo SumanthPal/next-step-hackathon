@@ -39,8 +39,9 @@ const Home = () => {
 
 
   //filters hospital data
+  
   const filteredData = data.filter(hospitales => {
-    if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state)) {
+    if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state) && state != '') {
       return hospitales;
     }
   } 
@@ -92,7 +93,7 @@ const Home = () => {
   //output
   return (
     <div className="home">
-      <h1>Welcome to MedObserver</h1>
+      <h1>Welcome to Med Observer</h1>
       <div className="input-stuff">
         <input placeholder="enter state abbrev..." ref={inputRef} type="text" />
         <input type="text" placeholder="enter city..." ref={inputRef2} />

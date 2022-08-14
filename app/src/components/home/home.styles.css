@@ -11,6 +11,8 @@
  h1 {
     font-size: 100px;
     padding: 10%;
+    animation: backInDown; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
    
    
  }
@@ -24,15 +26,23 @@
   text-decoration:wavy;
   display: inline-block;
   font-size: 25px;
+  font-family: 'Julius Sans One', sans-serif;
+
   border-radius: 30px;
   width: 200px;
   margin: 20px;
-   font-family: 'Ovo', serif;
-  position:relative;
+  
+   animation: backInUp; /* referring directly to the animation's @keyframe declaration */
+ animation-duration: 2s;
+ /* don't forget to set a duration! */
+  
+
+
  }
   
  button:hover{
     opacity: 0.5;
+   
    
    
  }
@@ -44,6 +54,12 @@
     font-size:40px;
     border-radius: 10px;
     font-family: 'Julius Sans One', sans-serif;
+    
+   animation: backInUp; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+   
+   
+ 
 
  } 
  .container {
@@ -52,7 +68,7 @@
    background: rgb(101, 182, 239);
 
    border: 1px solid grey;
-   border-radius: 5px;
+   border-radius: 30px;
    top: 30%;
    padding: 25px;
    cursor: pointer;
@@ -66,7 +82,6 @@
  }
  .container:hover {
    transform: scale(1.05);
-   background: rgb(101, 182, 239);
  }
 
  .list {
@@ -90,10 +105,13 @@
    background-color: rgb(156, 212, 255);
    border: 5px;
    color: #d4af37;
-   margin-top: 20%;
+   margin-top: 20%; 
+   box-shadow: 10px 10px 8px grey;
+
 }
 .btn-cool:hover {
    transform: scale(1.05);
+   box-shadow: 15px 15x 15px rgb(62, 59, 59);
 
 }
 
