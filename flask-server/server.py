@@ -23,19 +23,16 @@ def filter_results(city, state):
                 "Coordinates": hospital["geometry"]["coordinates"]
             })
 
-    return results["HOSPITALS"]
+    return results
 
 
-@app.route("/", methods=["POST"])
+@app.route("/results/")
 def results():
 
-    if request.method == "POST":
+    city = request.args.get("city")
+    state = request.args.get("state")
 
-        city = request.form.get("inputRef2")
-        state = request.form.get("inputRef")
-
-        return filter_results(city, state)
-    return None
+    return filter_results(city, state)
 
 
 if __name__ == "__main__":
