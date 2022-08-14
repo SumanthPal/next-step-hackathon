@@ -22,17 +22,16 @@ const Home = () => {
         })
       );
   })
+
+  const doubleClick = () => {
+    handleClick();
+    handleClick();
+  }
   const handleClick = () => {
     setState(inputRef.current.value.toLocaleUpperCase());
     setCity(inputRef2.current.value.toLocaleUpperCase());
     
-    const filteredData = data.filter(hospitales => {
-      if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state)) {
-        return hospitales;
-      }
-    } 
-    )
-    setfdata(filteredData);
+    
    // window.open("/results");
   
     
@@ -40,10 +39,15 @@ const Home = () => {
 
 
   //filters hospital data
- 
+  const filteredData = data.filter(hospitales => {
+    if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state)) {
+      return hospitales;
+    }
+  } 
+  )
 
 
-  const addHospitals = fdata.map(hospitales => {
+  const addHospitals = filteredData.map(hospitales => {
     const handleHospital = () => {
         //setLng(5)
        // setLat(-5)
@@ -53,12 +57,13 @@ const Home = () => {
     var url = "https://www.google.com/maps/place/" + Number(hospitales.geometry.coordinates[1]) +","+ Number(hospitales.geometry.coordinates[0])
     return (
       <div className = "container"  >
-        <h3>{hospitales.properties.n}</h3>
-            
-        <li>Inpatient Beds in Use: {hospitales.properties.bc}</li>
-        <li>Hospital Address: {hospitales.properties.a}</li>
+        <h2>{hospitales.properties.n}</h2>
+        
+        <li>Vacant ICU Beds: <strong>{(Math.round(hospitales.properties.it)-Math.round(hospitales.properties.iu))}/{Math.round(hospitales.properties.it)}</strong></li>
+        <li>Vacant In-Patient Beds <strong>{(Math.round(hospitales.properties.bt)-Math.round(hospitales.properties.bu))}/{Math.round(hospitales.properties.bt)}</strong></li>
+        <li>Hospital Address: <strong>{hospitales.properties.a}</strong></li>
         <a href={url}> 
-          <input type = "button" value="Get Directions!" />
+          <input type = "button" value="Get Directions!" className="btn-cool" />
          </a>
 
         </div>
@@ -91,9 +96,9 @@ const Home = () => {
       <div className="input-stuff">
         <input placeholder="enter state abbrev..." ref={inputRef} type="text" />
         <input type="text" placeholder="enter city..." ref={inputRef2} />
-
+        </div>
         <button onClick={handleClick} >Enter</button>
-      </div>
+      
 
       <div className="list">
       {addHospitals}
@@ -102,8 +107,9 @@ const Home = () => {
       </div>
 
 
-      <h1>Results</h1>
-      <footer>Created by High School Students</footer>
+      <footer>Created by High School Students:
+        Sumanth Pallamreddy, Rahil Pasha, Pradyum Chitlu, and Akhilesh Basetty
+      </footer>
 
     </div>
   );
