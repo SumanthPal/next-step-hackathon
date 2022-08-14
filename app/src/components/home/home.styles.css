@@ -10,23 +10,22 @@
   
  h1 {
     font-size: 100px;
-    padding: 10%;
+    padding-top: 0%;
     animation: backInDown; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s; /* don't forget to set a duration! */
    
    
  }
+
+
   
- button {
-    background-color: #d4af37; /* Green */
-  border: 5px;
-  color: whitesmoke;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration:wavy;
-  display: inline-block;
-  font-size: 25px;
-  font-family: 'Julius Sans One', sans-serif;
+ .btn {
+   margin: 0%;
+    background-color: #d4af37; 
+    box-shadow: 0px 5px 0 #ffd300;
+    border: 5px;
+      color: whitesmoke;
+      font-family: 'Julius Sans One', sans-serif;
 
   border-radius: 30px;
   width: 200px;
@@ -36,33 +35,73 @@
  animation-duration: 2s;
  /* don't forget to set a duration! */
   
-
+ transform: translateZ(0);
+ transition: transform 0.25s ease-out;
 
  }
   
- button:hover{
-    opacity: 0.5;
+ .btn:hover{
+   opacity: 100%;
+   background-color: #ffd300; 
+   box-shadow: 0px 5px 0 #d4af37;
+   
+   transform: scale(1.1);
+
    
    
-   
+ }
+
+ .btn:active {
+   top: 6px;
+  background-color: #ffd300;
+  box-shadow: none;
  }
   
 
 
   
  .input-stuff {
-    font-size:40px;
-    border-radius: 10px;
-    font-family: 'Julius Sans One', sans-serif;
-    
+   
    animation: backInUp; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s; /* don't forget to set a duration! */
-   
-   
+   margin-bottom: 20px;
  
 
  } 
+
+ .state-btn {
+   font-size:40px;
+   border-radius: 10px;
+   font-family: 'Julius Sans One', sans-serif;
+   
+   transform: translateZ(0);
+ transition: transform 0.25s ease-out;
+   margin-right: 20px
+
+ }
+
+ .state-btn:hover {
+   transform: scale(1.1);
+ }
+
+ .city-btn {
+   font-size:40px;
+   border-radius: 10px;
+   font-family: 'Julius Sans One', sans-serif;
+   transform: translateZ(0);
+   transition: transform 0.25s ease-out;
+   
+ }
+
+ .city-btn:hover{
+   transform: scale(1.1);
+
+ }
+
+
  .container {
+   animation: fadeInUpBig;
+   animation-duration: 3s;
    display: flexbox;
    flex-direction: column;
    background: rgb(101, 182, 239);
@@ -107,10 +146,12 @@
    color: #d4af37;
    margin-top: 20%; 
    box-shadow: 10px 10px 8px grey;
+   transform: translateZ(0);
+ transition: transform 0.25s ease-out;
 
 }
 .btn-cool:hover {
-   transform: scale(1.05);
+   transform: scale(1.1);
    box-shadow: 15px 15x 15px rgb(62, 59, 59);
 
 }
