@@ -11,7 +11,6 @@ const Home = () => {
 
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
-  const [fdata, setfdata] = useState([])
   const inputRef = useRef(null);
   const inputRef2 = useRef(null);
 
@@ -23,10 +22,7 @@ const Home = () => {
       );
   })
 
-  const doubleClick = () => {
-    handleClick();
-    handleClick();
-  }
+  
   const handleClick = () => {
     setState(inputRef.current.value.toLocaleUpperCase());
     setCity(inputRef2.current.value.toLocaleUpperCase());
@@ -41,20 +37,16 @@ const Home = () => {
   //filters hospital data
   
   const filteredData = data.filter(hospitales => {
-    if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state) && (city != '' || state != '')) {
+    if ( hospitales.properties.c.includes(city) && hospitales.properties.s.includes(state) && state !== '') {
       return hospitales;
     }
+    
   } 
   )
 
 
   const addHospitals = filteredData.map(hospitales => {
-    const handleHospital = () => {
-        //setLng(5)
-       // setLat(-5)
-  
-     
-    }
+    
     var url = "https://www.google.com/maps/place/" + Number(hospitales.geometry.coordinates[1]) +","+ Number(hospitales.geometry.coordinates[0])
     return (
       <div className = "container"  >
@@ -95,10 +87,10 @@ const Home = () => {
     <div className="home">
       <h1>Welcome to Med Observer</h1>
       <div className="input-stuff">
-        <input placeholder="enter state abbrev..." ref={inputRef} type="text" />
-        <input type="text" placeholder="enter city..." ref={inputRef2} />
+        <input className='state-btn'placeholder="enter state abbrev..." ref={inputRef} type="text" />
+        <input type="text" placeholder="enter city..." ref={inputRef2} className='city-btn' />
         </div>
-        <button onClick={handleClick} >Enter</button>
+        <button className='btn' onClick={handleClick} >Enter</button>
       
 
       <div className="list">
